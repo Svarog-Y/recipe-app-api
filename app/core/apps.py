@@ -1,3 +1,4 @@
+# noinspection PyUnresolvedReferences
 from django.apps import AppConfig
 
 
