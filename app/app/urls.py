@@ -13,6 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+)
 # noinspection PyUnresolvedReferences
 from django.contrib import admin
 # noinspection PyUnresolvedReferences
@@ -20,4 +24,10 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/schema/', SpectacularAPIView.as_view(), name='api_schema'),
+    path(
+        'api/docs/',
+        SpectacularSwaggerView.as_view(url_name='api_schema'),
+        name='api_docs'
+    ),
 ]
